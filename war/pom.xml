@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>wsConsumer</artifactId>
+    <groupId>de.softceed.camel.example</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <groupId>de.softceed.camel.example</groupId>
+  <artifactId>wsConsumer-war</artifactId>
+  <packaging>war</packaging>
+  <name>wsConsumer-war</name>
+  <description>Project for war artefact of wsConsumer</description>
+
+  <dependencies>
+    <dependency>
+      <!-- Client classes for external web services -->
+      <groupId>de.softceed.camel.example</groupId>
+      <artifactId>webservice-beans</artifactId>
+      <version>${wsConsumer-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-cxf</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jaxb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+          <webResources>
+            <resource>
+              <directory>src/main/webapp</directory>
+              <filtering>true</filtering>
+            </resource>
+          </webResources>
+          <attachClasses>true</attachClasses>
+          <packagingExcludes>%regex[WEB-INF/lib/(?!webservice-beans*)(?!standard*).*.jar]</packagingExcludes>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+    <!-- Name of the generated WAR file -->
+    <finalName>wsConsumer-WebService</finalName>
+  </build>
+
+</project>
