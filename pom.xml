@@ -21,7 +21,7 @@
     <cxf-version>2.4.0</cxf-version>
     <geronimo-version>1.1.1</geronimo-version>
     <weblogic-version>10.3.4</weblogic-version>
-    <springframework-version>3.0.5.RELEASE</springframework-version>
+    <springframework-version>6.0.0</springframework-version>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
     <!-- WebLogic AdminServer: -->
